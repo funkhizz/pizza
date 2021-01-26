@@ -1,14 +1,25 @@
+{% load pipeline %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizzas</title>
+    {% stylesheet 'base' %}
+    {% block css %}{% endblock css %}
 </head>
 <body>
-    
-    {% block content %}
-    {% endblock content %}
-        
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+
+            </div>
+        </header>
+        {% block content %}
+        {% endblock content %}
+        <footer>
+
+        </footer>
+    </div> 
 </body>
 </html>

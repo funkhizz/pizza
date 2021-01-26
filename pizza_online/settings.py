@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pipeline',
     'pizza_online.apps.pizzas.apps.PizzasConfig',
     'pizza_online.apps.ingredients.apps.IngredientsConfig'
 ]
@@ -119,4 +120,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATICFILES_STORAGE = "pipeline.storage.PipelineStorage"
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "pipeline.finders.PipelineFinder",
+)
+
+STATIC_ROOT = PROJECT_DIR / "staticfiles"
+STATIC_URL = "/static/"
+
+STATICFILES_DIRS = (PROJECT_DIR / "static",)
+
+
+# django-pipeline
+# ----------------------------
+PIPELINE = {
+    "STYLESHEETS": {
+        "base": {
+            "source_filenames": ("scss/base.scss",),
+            "output_filename": "css/base.min.css",
+        },
+        "home": {
+            "source_filenames": ("scss/pages/home.scss",),
+            "output_filename": "css/pages/home.min.css",
+        },
+    },
+    "JAVASCRIPT": {
+    },
+    "COMPILERS": ("pipeline.compilers.sass.SASSCompiler",),
+    "SASS_BINARY": "pysassc",
+    "SASS_ARGUMENTS": "--sourcemap",
+    "JS_COMPRESSOR": "pipeline.compressors.NoopCompressor",
+    "DISABLE_WRAPPER": True,
+}
