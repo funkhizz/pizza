@@ -1,4 +1,4 @@
-{% load pipeline %}
+{% load pipeline static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +28,18 @@
                 </ul>
             </div>
         </header>
-        {% block content %}
-        {% endblock content %}
+        <section class="banner">
+            <div class="banner__content">
+                <p>Limited edition new pizza</p>
+            </div>
+            <img src="{% static 'img/pizza-banner.jpeg' %}" alt="pizza-banner" class="img-responsive img-responsive-banner">
+        </section>
+
+        <main class="main">
+            {% block content %}
+            {% endblock content %}
+        </main>
+
         <footer id="footer">
 
         </footer>

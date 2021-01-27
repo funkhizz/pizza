@@ -6,7 +6,7 @@
 {% endblock css %}
 
 {% block content %}
-    <main class="main row">
+    <div class="row">
             
         {% if pizzas %}
             {% for pizza in pizzas %}
@@ -28,6 +28,6 @@
             {% endfor %}
         {% endif %}
             
-    </main>
+    </div>
 {% endblock content %}
     
