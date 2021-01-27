@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load pipeline %}
+
+{% block css %}
+    {% stylesheet 'home' %}
+{% endblock css %}
+    
+
+{% block content %}
+    <section class="banner">
+
+    </section>
+    <section class="featured row">
+            
+        {% for i in "123456" %}
+            <div class="feature-card">
+                1
+            </div>
+        {% endfor %}
+            
+    </section>
+    
+{% endblock content %}
+    

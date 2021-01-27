@@ -2,13 +2,12 @@
 {% load pipeline %}
 
 {% block css %}
-    {% stylesheet 'home' %}
+    {% stylesheet 'pizza-list' %}
 {% endblock css %}
-    
 
 {% block content %}
     <main class="main row">
-        
+            
         {% if pizzas %}
             {% for pizza in pizzas %}
                 {% if pizza.status %}
@@ -30,16 +29,5 @@
         {% endif %}
             
     </main>
-
-    <section class="featured row">
-            
-        {% for i in "123456" %}
-            <div class="feature-card">
-                1
-            </div>
-        {% endfor %}
-            
-    </section>
-    
 {% endblock content %}
     

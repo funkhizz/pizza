@@ -21,10 +21,10 @@
             </div>
             <div class="nav-bar">
                 <ul class="nav-bar__lists row">
-                    <li class="nav-bar__lists__item">Home</li>
-                    <li class="nav-bar__lists__item">Pizzas</li>
-                    <li class="nav-bar__lists__item">About</li>
-                    <li class="nav-bar__lists__item">Contact</li>
+                    <a href="/" class="nav-bar__lists__item"><li>Home</li></a>
+                    <a href="{% url 'pizzas:pizza-list' %}" class="nav-bar__lists__item"><li >Pizzas</li></a>
+                    <a href="http://" class="nav-bar__lists__item"><li>About</li></a>
+                    <a href="http://" class="nav-bar__lists__item"><li>Contact</li></a>
                 </ul>
             </div>
         </header>

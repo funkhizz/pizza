@@ -35,10 +35,14 @@
                 list-style: none;
                 text-transform: uppercase;
                 margin-top: 1rem;
+                text-decoration: none;
                 &:hover {
                     cursor: pointer;
                     margin-top: 0;
                     background-color: $color-red;
+                }
+                li {
+                    color: $color-white;
                 }
             }
         }
