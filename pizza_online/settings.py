@@ -151,6 +151,11 @@ PIPELINE = {
             "source_filenames": ("scss/pages/pizza-list.scss",),
             "output_filename": "css/pages/pizza-list.min.css",
         },
+        "pizza-detail": {
+            "source_filenames": ("scss/pages/pizza-detail.scss",),
+            "output_filename": "css/pages/pizza-detail.min.css",
+        },
+
     },
     "JAVASCRIPT": {
     },

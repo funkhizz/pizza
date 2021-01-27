@@ -1,0 +1,57 @@
+@import '../base.scss';
+
+.pizza-section {
+    .details {
+        color: $color-blue;
+        margin-bottom: 1rem;
+        &:last-of-type {
+            margin-bottom: 5rem;
+        }
+        .order {
+            height: 5rem;
+            @include flex-center;
+            .order__title, .order__price {
+                @include title-style;
+            }
+            &__title {
+                width: 60%;
+
+            }
+            &__option {
+                @include flex-center;
+                width: 40%;
+                justify-content: space-between;
+            }
+            &__price {
+
+            }
+        }
+        .info {
+            a {
+                color: $color-blue;
+                text-decoration: none;
+                font-size: $font-size-sm;
+                span {
+                    margin-right: 1.5rem;
+                }
+                &:hover {
+                    text-decoration: underline;
+                    color: $color-black;
+                }
+            }
+        }
+    }
+    .image {
+
+    }
+    .toppings {
+        &__title {
+            padding-left: 1rem;
+            background-color: $color-blue-light;
+            @include title-style;
+        }
+        &__list {
+
+        }
+    }
+}

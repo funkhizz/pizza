@@ -1,0 +1,26 @@
+<div class="details">
+    <div class="order">
+        <div class="order__title">
+            {{ pizza }}
+        </div>
+        <div class="order__option">
+            <div class="quantity">
+                <select name="quantity">
+                    {% for key, values in quantity_choices.items %}
+                    <option value="{{ values }}">{{ values }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="order__price">
+                {{ pizza.price }}
+            </div>
+            <button class="btn btn-green">
+                Add to order
+            </button>
+        </div>
+    </div>
+    <div class="info">
+        <a href="{% url 'pizzas:pizza-list' %}"><span>Change section</span></a>
+        <a href=""><span>Allergen info</span></a>
+    </div>
+</div>

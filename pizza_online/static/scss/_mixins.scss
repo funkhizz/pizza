@@ -3,3 +3,11 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+@mixin title-style {
+    color: $color-blue;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}

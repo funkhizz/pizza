@@ -22,22 +22,26 @@
                 </div>
             </div>
             <div class="nav-bar">
-                <ul class="nav-bar__lists row">
-                    <a href="/" class="nav-bar__lists__item"><li>Home</li></a>
-                    <a href="{% url 'pizzas:pizza-list' %}" class="nav-bar__lists__item"><li >Pizzas</li></a>
-                    <a href="http://" class="nav-bar__lists__item"><li>About</li></a>
-                    <a href="http://" class="nav-bar__lists__item"><li>Contact</li></a>
-                    <a href="http://" class="nav-bar__lists__item"><li>Cart</li></a>
+                <ul class="lists row">
+                    <a href="/" class="lists__item"><li>Home</li></a>
+                    <a href="{% url 'pizzas:pizza-list' %}" class="lists__item"><li>Menu</li></a>
+                    <a href="http://" class="lists__item"><li>About</li></a>
+                    <a href="http://" class="lists__item"><li>Contact</li></a>
+                    <a href="http://" class="lists__item"><li>Cart</li></a>
                 </ul>
             </div>
         </header>
-        <section class="banner">
-            <div class="banner__content">
-                <p>Limited edition</p>
-                <p>NEW Salami pizza!</p>
-            </div>
-            <img src="{% static 'img/pizza-banner.jpeg' %}" alt="pizza-banner" class="img-responsive img-responsive-banner">
-        </section>
+        
+        {% block banner %}
+            <section class="banner">
+                <div class="banner__content">
+                    <p>Limited edition</p>
+                    <p>NEW Salami pizza!</p>
+                </div>
+                <img src="{% static 'img/pizza-banner.jpeg' %}" alt="pizza-banner" class="img-responsive img-responsive-banner">
+            </section>
+        {% endblock banner %}
+            
 
         <main class="main">
             {% block content %}
