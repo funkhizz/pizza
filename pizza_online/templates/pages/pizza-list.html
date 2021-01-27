@@ -8,6 +8,7 @@
 {% block content %}
     <div class="row">
             
+    {% with pizzas=object_list %}
         {% if pizzas %}
             {% for pizza in pizzas %}
                 {% if pizza.status %}
@@ -27,7 +28,8 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
-            
+    {% endwith %}
+        
     </div>
 {% endblock content %}
     
