@@ -39,7 +39,7 @@ class Pizza(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("pizza_detail", kwargs={"slug": self.slug})
+        return reverse("pizzas:pizza_detail", kwargs={"slug": self.slug})
 
 
 @receiver(pre_save, sender=Pizza)
