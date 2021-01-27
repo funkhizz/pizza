@@ -13,7 +13,9 @@
             {% for pizza in pizzas %}
                 {% if pizza.status %}
                     <div class="pizza-card">
-                        <a href="{{ pizza.get_absolute_url }}"><img src="{{ pizza.image.url }}" class="img-responsive img-responsive-pizza"></a>
+                        <div class="pizza-card__image">
+                            <a href="{{ pizza.get_absolute_url }}"><img src="{{ pizza.image.url }}" class="img-responsive img-responsive-pizza"></a>
+                        </div>
                         <div class="pizza-card__title">
                             <h2>{{ pizza.title }} {{ pizza.price }}</h2>
                         </div>

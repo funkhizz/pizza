@@ -10,7 +10,14 @@
         margin-right: 2rem;
     }
     &__image {
-        
+        overflow: hidden;
+        &:hover {
+            .img-responsive-pizza {
+                transition: opacity 0.3s, transform 0.3s ease-in;
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
     }
     &__title {
         background-color: $color-black;
