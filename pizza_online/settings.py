@@ -133,7 +133,8 @@ STATIC_URL = "/static/"
 
 STATICFILES_DIRS = (PROJECT_DIR / "static",)
 
-
+MEDIA_ROOT = PROJECT_DIR / "uploads"
+MEDIA_URL = "/uploads/"
 # django-pipeline
 # ----------------------------
 PIPELINE = {

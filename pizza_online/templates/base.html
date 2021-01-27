@@ -11,13 +11,26 @@
 <body>
     <div class="container">
         <header>
+            <div class="header-top">
+                <div class="header-top__logo">
+                    logo
+                </div>
+                <div class="header-top__cart">
+                    cart
+                </div>
+            </div>
             <div class="nav-bar">
-
+                <ul class="nav-bar__lists row">
+                    <li class="nav-bar__lists__item">Home</li>
+                    <li class="nav-bar__lists__item">Pizzas</li>
+                    <li class="nav-bar__lists__item">About</li>
+                    <li class="nav-bar__lists__item">Contact</li>
+                </ul>
             </div>
         </header>
         {% block content %}
         {% endblock content %}
-        <footer>
+        <footer id="footer">
 
         </footer>
     </div> 

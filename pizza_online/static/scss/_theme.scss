@@ -1,0 +1,51 @@
+.container {
+    width: 1100px;
+    margin: 0 auto;
+    .header-top {
+        display: flex;
+        height: 5rem;
+        &__logo, &__cart {
+            @include flex-center;
+        }
+        &__logo {
+            width: 80%;
+            
+        }
+        &__cart {
+            width: 20%;
+        }
+    }
+
+    .nav-bar {
+        height: 5rem;
+        margin-bottom: 1.5rem;
+        color: $color-white;
+        font-weight: $font-weight-bold;
+
+        &__lists {
+            height: 100%;
+            font-size: $font-size-md;
+            &__item {
+                &:not(:last-of-type) {
+                    border-right: 1px solid $color-black
+                }
+                @include flex-center;
+                background-color: $color-blue;
+                width: 25%;
+                list-style: none;
+                text-transform: uppercase;
+                margin-top: 1rem;
+                &:hover {
+                    cursor: pointer;
+                    margin-top: 0;
+                    background-color: $color-red;
+                }
+            }
+        }
+    }
+    #footer {
+        height: 20rem;
+        background-color: $gray-light;
+    }
+}
+

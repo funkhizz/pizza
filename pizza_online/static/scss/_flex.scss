@@ -1,0 +1,47 @@
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.pizza-card {
+    width: 25rem;
+    &:not(:last-of-type) {
+        margin-right: 2rem;
+    }
+    &__image {
+        
+    }
+    &__title {
+        background-color: $color-black;
+        padding: 1rem;
+        @include flex-center;
+        h2 {
+            color: $color-white;
+            
+        }
+    }
+    &__description {
+        background-color: $color-green;
+        color: $color-white;
+        font-size: $font-size-md;
+        padding: 0.5rem;
+        height: 8rem;
+    }
+}
+
+.feature-card {
+    background-color: $color-blue;
+    width: 35rem;
+    margin-bottom: 2rem;
+    height: 15rem;
+}
+
+.img-responsive {
+    width: 100%;
+    object-fit: cover;
+}
+
+.img-responsive-pizza {
+    height: 25rem;
+}

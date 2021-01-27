@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from pizza_online.apps.pizzas.models import Pizza
 
 
@@ -11,3 +11,10 @@ class BaseView(TemplateView):
         # Add in a QuerySet of all the books
         context["pizzas"] = Pizza.objects.all()
         return context
+
+
+class PizzaDetailView(DetailView):
+    model = Pizza
+    template_name = "detail.html"
+
+

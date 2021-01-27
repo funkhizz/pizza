@@ -7,6 +7,37 @@
     
 
 {% block content %}
+    <main class="main row">
+        
+        {% if pizzas %}
+            {% for pizza in pizzas %}
+                {% if pizza.status %}
+                    <div class="pizza-card">
+                        <a href="{{ pizza.get_absolute_url }}"><img src="{{ pizza.image.url }}" class="img-responsive img-responsive-pizza"></a>
+                        <div class="pizza-card__title">
+                            <h2>{{ pizza.title }} {{ pizza.price }}</h2>
+                        </div>
+                        <div class="pizza-card__description">
+                            {% for ingredient in pizza.ingredients.all %}
+                                <span>{{ ingredient.title }}{% if not forloop.last %},{% else %}.{% endif %}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+            
+    </main>
+
+    <section class="featured row">
+            
+        {% for i in "123456" %}
+            <div class="feature-card">
+                1
+            </div>
+        {% endfor %}
+            
+    </section>
     
 {% endblock content %}
     

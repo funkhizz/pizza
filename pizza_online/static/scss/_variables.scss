@@ -1,0 +1,26 @@
+// Colors
+$gray-light: lightgray;
+$color-white: white;
+$color-black: black;
+$color-green: #41A934;
+$color-blue: #006E9F;
+$color-dark: #373434;
+$color-red: #D51532;
+// Font sizes
+$font-size-default: 1rem;
+$font-size-sm: $font-size-default;
+$font-size-md: $font-size-default * 1.5;
+$font-size-lg: $font-size-default * 2;
+$font-size-xl: $font-size-default * 2.5;
+
+$h1-xl-font-size: $font-size-default * 6.5;
+$h1-lg-font-size: $font-size-default * 4;
+$h1-font-size: $font-size-default * 3.25;
+$h2-font-size: $font-size-default * 2.6;
+$h3-font-size: $font-size-default * 1.75;
+
+$font-weight-lighter: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-bolder: 800;
