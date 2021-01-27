@@ -4,7 +4,7 @@
 
     .header-top {
         display: flex;
-        height: 5rem;
+        height: 8rem;
 
         &__logo,
         &__cart {
@@ -12,8 +12,11 @@
         }
 
         &__logo {
-            width: 80%;
-
+            a {
+                width: 20%;
+                height: 100%;
+                padding-top: 1rem;
+            }
         }
 
         &__cart {
@@ -30,7 +33,7 @@
         &__lists {
             height: 100%;
             font-size: $font-size-md;
-
+            flex-flow: nowrap;
             &__item {
                 &:not(:last-of-type) {
                     border-right: 1px solid $color-black
@@ -66,7 +69,10 @@
             font-weight: $font-weight-bold;
             bottom: 15%;
             left: 5%;
-            text-shadow: 3px 3px 2px $color-blue;
+            text-shadow: 8px 7px 7px $color-blue;
+            p:first-of-type {
+                text-shadow: 8px 7px 7px $color-red;
+            }
         }
     }
 

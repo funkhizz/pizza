@@ -13,10 +13,12 @@
         <header>
             <div class="header-top">
                 <div class="header-top__logo">
-                    logo
+                    <a href="http://">
+                        <img src="{% static 'img/pizza-logo.jpeg' %}" alt="pizza-logo"  class="img-responsive-logo">
+                    </a>
                 </div>
                 <div class="header-top__cart">
-                    cart
+                    Vladimirs Lahiza
                 </div>
             </div>
             <div class="nav-bar">
@@ -25,12 +27,14 @@
                     <a href="{% url 'pizzas:pizza-list' %}" class="nav-bar__lists__item"><li >Pizzas</li></a>
                     <a href="http://" class="nav-bar__lists__item"><li>About</li></a>
                     <a href="http://" class="nav-bar__lists__item"><li>Contact</li></a>
+                    <a href="http://" class="nav-bar__lists__item"><li>Cart</li></a>
                 </ul>
             </div>
         </header>
         <section class="banner">
             <div class="banner__content">
-                <p>Limited edition NEW Salami pizza!</p>
+                <p>Limited edition</p>
+                <p>NEW Salami pizza!</p>
             </div>
             <img src="{% static 'img/pizza-banner.jpeg' %}" alt="pizza-banner" class="img-responsive img-responsive-banner">
         </section>

@@ -54,5 +54,11 @@
 }
 
 .img-responsive-banner {
-    height: 30rem;
+    height: 20rem;
+}
+
+.img-responsive-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
