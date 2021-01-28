@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "pipeline",
+    "custom_user",
     "pizza_online.apps.products.apps.ProductsConfig",
     "pizza_online.apps.ingredients.apps.IngredientsConfig",
     "pizza_online.apps.carts.apps.CartsConfig",
+    "pizza_online.apps.users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
@@ -87,6 +89,9 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+
+# AUTH
+AUTH_USER_MODEL = "users.User"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -148,9 +153,9 @@ PIPELINE = {
             "source_filenames": ("scss/pages/home.scss",),
             "output_filename": "css/pages/home.min.css",
         },
-        "pizza-list": {
-            "source_filenames": ("scss/pages/pizza-list.scss",),
-            "output_filename": "css/pages/pizza-list.min.css",
+        "menu-list": {
+            "source_filenames": ("scss/pages/menu-list.scss",),
+            "output_filename": "css/pages/menu-list.min.css",
         },
         "pizza-detail": {
             "source_filenames": ("scss/pages/pizza-detail.scss",),

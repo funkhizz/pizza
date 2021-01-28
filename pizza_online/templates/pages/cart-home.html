@@ -11,6 +11,11 @@
 
 
 {% block content %}
+    
+    {% for cart_item in cart_items %}
+        {{ cart_item }}
+    {% endfor %}
+        
     <div class="order-count">
         You have <span>1 item </span> on a delivery order.
     </div>

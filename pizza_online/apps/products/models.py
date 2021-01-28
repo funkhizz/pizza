@@ -30,7 +30,7 @@ def upload_image_path(instance, filename):
 class Product(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=100, blank=True, unique=True)
-    price = models.DecimalField(max_digits=5, decimal_places=2, default=5.99)
+    price = models.DecimalField(max_digits=5, decimal_places=2, default=15.99)
     image = models.ImageField(upload_to=upload_image_path, blank=False, null=True)
     added = models.DateField()
     status = models.BooleanField(default=False)
