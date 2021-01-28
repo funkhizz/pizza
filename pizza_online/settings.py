@@ -159,6 +159,10 @@ PIPELINE = {
 
     },
     "JAVASCRIPT": {
+        "global": {
+            "source_filenames": ("js/libs/jQuery-3.5.1.js",),
+            "output_filename": "js/jQuery-3.5.1.min.js",
+        },
         "pizza-detail": {
             "source_filenames": ("js/pages/pizza-detail.js",),
             "output_filename": "js/pizza-detail.min.js",

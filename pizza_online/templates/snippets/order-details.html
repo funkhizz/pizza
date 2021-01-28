@@ -5,9 +5,9 @@
         </div>
         <div class="order__option">
             <div class="quantity">
-                <select name="quantity">
+                <select name="quantity" id="{{ id }}">
                     {% for key, values in quantity_choices.items %}
-                    <option value="{{ values }}">{{ values }}</option>
+                    <option value="{{ values }}" >{{ values }}</option>
                     {% endfor %}
                 </select>
             </div>

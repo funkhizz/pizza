@@ -19,7 +19,7 @@
             {% csrf_token %}
             <input hidden name="pizza_id" value='{{pizza.id}}'>
             <section class="pizza-section">
-                {% include 'snippets/order-details.html' %}
+                {% include 'snippets/order-details.html' with id="id1" %}
                 <div class="image">
                     <img src="{{ pizza.image.url }}" class="img-responsive">
                 </div>
@@ -36,7 +36,7 @@
                                         <img src="{% static 'img/pizza-banner.jpeg' %}" class="img-responsive">
                                     </div>
                                     {% if ingredient in pizza.ingredients.all %}
-                                        <div class="topping-card__title active">
+                                        <div class="topping-card__title active base-ingredient">
                                             <select name="is_selected" hidden>
                                                 <option value="{{ ingredient.title }}" hidden></option>
                                             </select>
@@ -44,6 +44,9 @@
                                         </div>
                                     {% else %}
                                         <div class="topping-card__title">
+                                            <select name="not_selected" hidden>
+                                                <option value="{{ ingredient.title }}" hidden></option>
+                                            </select>
                                             {{ ingredient.title }}
                                         </div>
                                     {% endif %}
@@ -53,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                {% include 'snippets/order-details.html' %}
+                {% include 'snippets/order-details.html' with id="id2" %}
             </section>
         </form>
     {% endwith %}
