@@ -21,6 +21,7 @@ from .views import BaseView
 urlpatterns = [
     path("", BaseView.as_view(), name="homepage"),
     path("pizzas/", include("pizza_online.apps.pizzas.urls")),
+    path("cart/", include("pizza_online.apps.carts.urls")),
     path("admin/", admin.site.urls),
 ]
 

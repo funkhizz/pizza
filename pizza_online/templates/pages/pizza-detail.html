@@ -15,7 +15,8 @@
 
 {% block content %}
     {% with object=pizza %}
-        <form action="" method="post">
+        <form action="{% url 'carts:add_to_cart' %}" method="POST">
+            {% csrf_token %}
             <input hidden name="pizza_id" value='{{pizza.id}}'>
             <section class="pizza-section">
                 {% include 'snippets/order-details.html' %}
@@ -36,7 +37,7 @@
                                     </div>
                                     {% if ingredient in pizza.ingredients.all %}
                                         <div class="topping-card__title active">
-                                            <select name="is-selected" hidden>
+                                            <select name="is_selected" hidden>
                                                 <option value="{{ ingredient.title }}" hidden></option>
                                             </select>
                                             {{ ingredient.title }}
