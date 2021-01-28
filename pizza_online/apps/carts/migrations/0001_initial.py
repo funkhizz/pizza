@@ -10,30 +10,75 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('products', '0001_initial'),
+        ("products", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Cart',
+            name="Cart",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('total', models.DecimalField(decimal_places=2, default=0.0, max_digits=100)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('timestamp', models.DateTimeField(auto_now_add=True)),
-                ('products', models.ManyToManyField(blank=True, to='products.Product')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "total",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=100),
+                ),
+                ("updated", models.DateTimeField(auto_now=True)),
+                ("timestamp", models.DateTimeField(auto_now_add=True)),
+                ("products", models.ManyToManyField(blank=True, to="products.Product")),
             ],
         ),
         migrations.CreateModel(
-            name='CartItem',
+            name="CartItem",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quantity', models.IntegerField(default=0, validators=[django.core.validators.MaxValueValidator(50), django.core.validators.MinValueValidator(1)])),
-                ('line_total', models.DecimalField(decimal_places=2, default=0.0, max_digits=100)),
-                ('timestamp', models.DateTimeField(auto_now_add=True)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('cart', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='carts.cart')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.product')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "quantity",
+                    models.IntegerField(
+                        default=0,
+                        validators=[
+                            django.core.validators.MaxValueValidator(50),
+                            django.core.validators.MinValueValidator(1),
+                        ],
+                    ),
+                ),
+                (
+                    "line_total",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=100),
+                ),
+                ("timestamp", models.DateTimeField(auto_now_add=True)),
+                ("updated", models.DateTimeField(auto_now=True)),
+                (
+                    "cart",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="carts.cart",
+                    ),
+                ),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="products.product",
+                    ),
+                ),
             ],
         ),
     ]

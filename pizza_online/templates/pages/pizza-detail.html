@@ -17,7 +17,7 @@
     {% with pizza=object %}
         <form action="{% url 'carts:add_to_cart' %}" method="POST">
             {% csrf_token %}
-            <input hidden name="pizza_id" value='{{pizza.id}}'>
+            <input hidden name="product_id" value='{{pizza.id}}'>
             <section class="pizza-section">
                 {% include 'snippets/order-details.html' with id="id1" %}
                 <div class="image">

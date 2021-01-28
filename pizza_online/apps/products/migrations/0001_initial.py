@@ -9,22 +9,51 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('ingredients', '__first__'),
+        ("ingredients", "__first__"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=50)),
-                ('slug', models.SlugField(blank=True, max_length=100, unique=True)),
-                ('price', models.DecimalField(decimal_places=2, default=5.99, max_digits=5)),
-                ('image', models.ImageField(null=True, upload_to=pizza_online.apps.products.models.upload_image_path)),
-                ('added', models.DateField()),
-                ('status', models.BooleanField(default=False)),
-                ('category', models.CharField(choices=[('Pizzas', 'Pizzas'), ('Sides', 'Sides'), ('Deserts', 'Deserts'), ('Drinks', 'Drinks')], default='1', max_length=20)),
-                ('ingredients', models.ManyToManyField(to='ingredients.Ingredient')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=50)),
+                ("slug", models.SlugField(blank=True, max_length=100, unique=True)),
+                (
+                    "price",
+                    models.DecimalField(decimal_places=2, default=5.99, max_digits=5),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        null=True,
+                        upload_to=pizza_online.apps.products.models.upload_image_path,
+                    ),
+                ),
+                ("added", models.DateField()),
+                ("status", models.BooleanField(default=False)),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("Pizzas", "Pizzas"),
+                            ("Sides", "Sides"),
+                            ("Deserts", "Deserts"),
+                            ("Drinks", "Drinks"),
+                        ],
+                        default="1",
+                        max_length=20,
+                    ),
+                ),
+                ("ingredients", models.ManyToManyField(to="ingredients.Ingredient")),
             ],
         ),
     ]

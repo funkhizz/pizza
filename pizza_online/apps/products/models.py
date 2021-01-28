@@ -11,6 +11,7 @@ from pizza_online.utils import unique_slug_generator
 from pizza_online.apps.ingredients.models import Ingredient
 from .choices import CATEGORY_CHOICES
 
+
 def get_filename_ext(filepath):
     base_name = os.path.basename(filepath)
     name, ext = os.path.splitext(base_name)
@@ -34,7 +35,7 @@ class Product(models.Model):
     added = models.DateField()
     status = models.BooleanField(default=False)
     ingredients = models.ManyToManyField(Ingredient)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='1')
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="1")
 
     def __str__(self):
         return self.title

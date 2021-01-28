@@ -3,6 +3,7 @@ from pizza_online.apps.products.models import Product
 from pizza_online.apps.ingredients.models import Ingredient
 from .choices import QUANTITY_CHOICES
 
+
 class ProductListView(ListView):
     template_name = "pages/menu-list.html"
     model = Product
@@ -14,6 +15,6 @@ class PizzaDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['quantity_choices'] = QUANTITY_CHOICES
-        context['ingredients'] = Ingredient.objects.all()
+        context["quantity_choices"] = QUANTITY_CHOICES
+        context["ingredients"] = Ingredient.objects.all()
         return context
