@@ -15,37 +15,46 @@
 
 {% block content %}
     {% with object=pizza %}
-
-        <section class="pizza-section">
-            {% include 'snippets/order-details.html' %}
-            <div class="image">
-                <img src="{{ pizza.image.url }}" class="img-responsive">
-            </div>
-            <div class="toppings">
-                <div class="toppings__title">
-                    Toppings
+        <form action="" method="post">
+            <input hidden name="pizza_id" value='{{pizza.id}}'>
+            <section class="pizza-section">
+                {% include 'snippets/order-details.html' %}
+                <div class="image">
+                    <img src="{{ pizza.image.url }}" class="img-responsive">
                 </div>
-                <div class="toppings__list">
-                    <div class="row">
-                        
-                        {% for ingredient in ingredients %}
-                            <div class="topping-card row">
-                                <div class="topping-card__image">
-                                    <img src="{% static 'img/pizza-banner.jpeg' %}" class="img-responsive">
-                                </div>
-                                <div class="topping-card__title {% if ingredient in pizza.ingredients.all %}active" id="is-selected">{% else %}">{% endif %}
-                                    {{ ingredient.title }}
-                                </div>
-                            </div>
-                        {% endfor %}
+                <div class="toppings">
+                    <div class="toppings__title">
+                        Toppings
+                    </div>
+                    <div class="toppings__list">
+                        <div class="row">
                             
+                            {% for ingredient in ingredients %}
+                                <div class="topping-card row">
+                                    <div class="topping-card__image">
+                                        <img src="{% static 'img/pizza-banner.jpeg' %}" class="img-responsive">
+                                    </div>
+                                    {% if ingredient in pizza.ingredients.all %}
+                                        <div class="topping-card__title active">
+                                            <select name="is-selected" hidden>
+                                                <option value="{{ ingredient.title }}" hidden></option>
+                                            </select>
+                                            {{ ingredient.title }}
+                                        </div>
+                                    {% else %}
+                                        <div class="topping-card__title">
+                                            {{ ingredient.title }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                                
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% include 'snippets/order-details.html' %}
-
-        </section>
-    
+                {% include 'snippets/order-details.html' %}
+            </section>
+        </form>
     {% endwith %}
 {% endblock content %}
     
