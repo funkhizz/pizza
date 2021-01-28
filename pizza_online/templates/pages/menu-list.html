@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load pipeline %}
+
+{% block css %}
+    {% stylesheet 'product-list' %}
+{% endblock css %}
+
+{% block content %}
+    <div class="row">
+            
+    {% with products=object_list %}
+        {% if products %}
+            {% for product in products %}
+                {% if product.status %}
+                    <div class="product-card">
+                        <div class="product-card__image">
+                            <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" class="img-responsive img-responsive-product"></a>
+                        </div>
+                        <div class="product-card__title">
+                            <h2>{{ product.title }} {{ product.price }}</h2>
+                        </div>
+                        <div class="product-card__description">
+                            {% for ingredient in product.ingredients.all %}
+                                <span>{{ ingredient.title }}{% if not forloop.last %},{% else %}.{% endif %}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+        
+    </div>
+{% endblock content %}
+    

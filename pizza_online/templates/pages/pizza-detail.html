@@ -14,7 +14,7 @@
 
 
 {% block content %}
-    {% with object=pizza %}
+    {% with pizza=object %}
         <form action="{% url 'carts:add_to_cart' %}" method="POST">
             {% csrf_token %}
             <input hidden name="pizza_id" value='{{pizza.id}}'>

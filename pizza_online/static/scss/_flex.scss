@@ -4,7 +4,7 @@
     justify-content: space-between;
 }
 
-.pizza-card {
+.product-card {
     width: 25rem;
     &:not(:last-of-type) {
         margin-right: 2rem;
@@ -73,7 +73,7 @@
     object-fit: cover;
 }
 
-.img-responsive-pizza {
+.img-responsive-product {
     height: 25rem;
 }
 

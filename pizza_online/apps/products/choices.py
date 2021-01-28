@@ -1,4 +1,4 @@
-quantity_choices = {
+QUANTITY_CHOICES = {
     "1":1,
     "2":2,
     "3":3,
@@ -15,3 +15,10 @@ quantity_choices = {
     "14":14,
     "15":15,
 }
+
+CATEGORY_CHOICES = (
+    ("Pizzas", "Pizzas"),
+    ("Sides", "Sides"),
+    ("Deserts", "Deserts"),
+    ("Drinks", "Drinks"),
+)
