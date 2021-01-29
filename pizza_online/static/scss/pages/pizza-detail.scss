@@ -51,7 +51,7 @@
             @include title-style;
         }
         &__list {
-
+            @include flex-center;
         }
     }
 }

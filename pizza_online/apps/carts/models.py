@@ -3,6 +3,7 @@ from django.conf import settings
 from pizza_online.apps.products.models import Product
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
 User = settings.AUTH_USER_MODEL
 
 
@@ -32,7 +33,6 @@ class CartManager(models.Manager):
 
 class Cart(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product, blank=True)
     total = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -57,3 +57,4 @@ class CartItem(models.Model):
             return str(self.product.title)
         except:
             return self.product.title
+

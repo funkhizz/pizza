@@ -2,8 +2,8 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    &.row-start{
-        justify-content: start;
+    &:last-child {
+        margin-right: auto;
     }
 }
 
@@ -48,11 +48,14 @@
 }
 
 .topping-card {
-    width: 35rem;
+    width: 36rem;
     margin-bottom: 1rem;
     height: 4rem;
     border: 1px solid $gray-light;
     font-size: $font-size-sm;
+    &:not(:last-of-type) {
+        margin-right: 1rem;
+    }
     &__image {
         width: 20%;
     }

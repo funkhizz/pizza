@@ -27,8 +27,7 @@
                     <div class="toppings__title">
                         Toppings
                     </div>
-                    <div class="toppings__list">
-                        <div class="row">
+                    <div class="toppings__list row">
                             
                             {% for ingredient in ingredients %}
                                 <div class="topping-card row">
@@ -53,7 +52,6 @@
                                 </div>
                             {% endfor %}
                                 
-                        </div>
                     </div>
                 </div>
                 {% include 'snippets/order-details.html' with id="id2" %}
