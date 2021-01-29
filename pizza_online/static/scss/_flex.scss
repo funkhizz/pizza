@@ -2,9 +2,10 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    &:last-child {
-        margin-right: auto;
-    }
+    &:after {
+        content: '';
+        flex: auto;
+        }
 }
 
 .product-card {

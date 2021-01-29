@@ -43,8 +43,10 @@
                             £ {{ cart_item.product.price }}
                         </div>
                         <div class="right-side__actions">
-                            <form action="" method="post">
+                            <form action="{% url 'carts:remove_from_cart' %}" method="post">
                                 {% csrf_token %}
+                                <input hidden name="cart_item_id" value="{{ cart_item.id }}">
+                                <input hidden name="cart_id" value="{{ cart.id }}">
                                 <button class="action action-modify">
                                     {% include 'svgs/pencil.html' %}
                                 </button>
@@ -59,8 +61,10 @@
                                 </button>
                             </form>
 
-                            <form action="" method="post">
+                            <form action="{% url 'carts:remove_from_cart' %}" method="post">
                                 {% csrf_token %}
+                                <input hidden name="cart_item_id" value="{{ cart_item.id }}">
+                                <input hidden name="cart_id" value="{{ cart.id }}">
                                 <button class="action action-remove">
                                     {% include 'svgs/trash.html' %}
                                 </button>
