@@ -8,11 +8,11 @@ class CartHomeBaseView(TemplateView):
     template_name = "pages/cart-home.html"
 
     def get(self, request, *args, **kwargs):
+        cart_quantity = 0
         if request.session.get("cart_items", False):
             cart_quantity = request.session.get("cart_items")
         cart_obj, new_obj = Cart.objects.new_or_get(request)
         cartItems = CartItem.objects.filter(cart=cart_obj.id)
-        print(cart_quantity)
         context = {
             "cart_items": cartItems,
             "cart": cart_obj,
@@ -38,14 +38,9 @@ def add_to_cart(request):
                 cart=cart_obj, product=product_obj, quantity=1
             )
             cart_obj.refresh_from_db()
-            cart_obj.total += product_obj.price * quantity
+            cart_obj.total += product_obj.price
             cart_item.save()
             cart_obj.save()
-
-        cart_quantity = 0
-        all_items = CartItem.objects.filter(cart=cart_obj)
-        for item in all_items:
-            cart_quantity += item.quantity
         count_cart_items(request, cart_obj)
     return redirect("carts:cart-home")
 
@@ -56,23 +51,18 @@ def remove_from_cart(request):
     if cart_item_id:
         cart_item = CartItem.objects.get(id=cart_item_id).delete()
         cart_items = CartItem.objects.filter(cart=cart_id)
-        print(cart_items)
         total = 0
         for cart_item in cart_items:
             total += cart_item.product.price
         cart_obj = Cart.objects.get(id=cart_id)
-        print(cart_items)
+        cart_obj.total = total
+        cart_obj.save()
+        count_cart_items(request, cart_obj)
         if cart_items:
-            cart_obj.total = total
-            cart_obj.save()
-            count_cart_items(request, cart_obj)
             return redirect("carts:cart-home")
     return redirect("products:menu-list")
 
 
 def count_cart_items(request, cart_obj):
-    cart_quantity = 0
-    all_items = CartItem.objects.filter(cart=cart_obj)
-    for item in all_items:
-        cart_quantity += item.quantity
+    cart_quantity = CartItem.objects.filter(cart=cart_obj).count()
     request.session["cart_items"] = cart_quantity
