@@ -49,7 +49,6 @@ class CartItem(models.Model):
     quantity = models.IntegerField(
         default=0, validators=[MaxValueValidator(50), MinValueValidator(1)]
     )
-    line_total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 

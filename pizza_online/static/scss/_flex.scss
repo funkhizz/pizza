@@ -2,6 +2,9 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    &.row-start{
+        justify-content: start;
+    }
 }
 
 .product-card {
@@ -72,6 +75,8 @@
     height: 100%;
     object-fit: cover;
 }
+
+
 
 .img-responsive-product {
     height: 25rem;

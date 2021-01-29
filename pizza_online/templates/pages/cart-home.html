@@ -9,34 +9,75 @@
     {% stylesheet 'cart-home' %}
 {% endblock css %}
 
-
 {% block content %}
-    
-    {% for cart_item in cart_items %}
-        {{ cart_item }}
-    {% endfor %}
-        
+
     <div class="order-count">
-        You have <span>1 item </span> on a delivery order.
+        <div>
+            You have <span>{{ cart_quantity }} item </span> on a delivery order.
+        </div>
     </div>
     <div class="order-info">
-        <div class="content">
-            <div class="left-side row">
-                <div class="left-side__image">
+            {% for cart_item in cart_items %}
+                <div class="content">   
 
-                </div>
-                <div class="left-side__body">
+                    <div class="left-side row">
+                        <div class="left-side__image">
+                            <img src="{{ cart_item.product.image.url }}" alt="product-image" class="img-responsive">
+                            <div class="product-quantity">
+                                {{ cart_item.quantity }}
+                            </div>
+                        </div>
+                        <div class="left-side__body">
+                            {{ cart_item.product.title }}
+                            {% for ingredient in cart_item.product.ingredients.all %}
+                                <div class="ingredient">
+                                    {{ ingredient.title  }}
+                                </div>
+                            {% endfor %}
+                                
+                        </div>
 
-                </div>
-            </div>
-            <div class="right-side">
-                <div class="right-side__price">
+                    </div>
+                    <div class="right-side">
+                        <div class="right-side__price">
+                            £ {{ cart_item.product.price }}
+                        </div>
+                        <div class="right-side__actions">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <button class="action action-modify">
+                                    {% include 'svgs/pencil.html' %}
+                                </button>
+                            </form>
 
+                            <form action="{% url 'carts:add_to_cart' %}" method="post">
+                                {% csrf_token %}
+                                <input hidden name="product_id" value="{{ cart_item.product.id }}">
+                                <input hidden name="quantity" value="1">
+                                <button class="action action-add">
+                                    {% include 'svgs/plus.html' %}
+                                </button>
+                            </form>
+
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <button class="action action-remove">
+                                    {% include 'svgs/trash.html' %}
+                                </button>
+                            </form>
+                            
+                        </div>
+                    </div>
                 </div>
-                <div class="right-side__actions">
-                    
-                </div>
-            </div>
+            {% endfor %}  
+    </div>
+    <div class="order-total row">
+        <div class="total-left">
+            
+        </div>
+        <div class="total-right">
+            <div class="total">Total (including VAT</div>
+            <div class="price">£ {{ cart.total }}</div>
         </div>
     </div>
 {% endblock content %}
