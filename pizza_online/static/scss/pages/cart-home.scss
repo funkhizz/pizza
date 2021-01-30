@@ -70,7 +70,7 @@
                 font-weight: $font-weight-bold;
             }
             &__actions {
-                form:not(:last-of-type) {
+                a, form:not(:last-of-type) {
                     margin-right: 1rem;
                 }
                 .action {
