@@ -1,0 +1,13 @@
+<div class="alert alert-danger">
+    <p class="lead">There was a problem with your submission</p>
+
+    {% with system_label=_("System") %}
+        {% if form.non_field_errors %}
+            {% for k, v in form.non_field_errors.items %}
+                <p>{{ v|striptags }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <p>{% trans "Check below for any fields highlighted in red." %}</p>
+</div>

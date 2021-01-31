@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "pipeline",
     "custom_user",
+    'crispy_forms',
     "pizza_online.apps.products.apps.ProductsConfig",
     "pizza_online.apps.ingredients.apps.IngredientsConfig",
     "pizza_online.apps.carts.apps.CartsConfig",
@@ -92,6 +93,10 @@ DATABASES = {
 
 # AUTH
 AUTH_USER_MODEL = "users.User"
+
+# Login
+LOGIN_REDIRECT_URL = "users:home"
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -165,10 +170,14 @@ PIPELINE = {
             "source_filenames": ("scss/pages/cart-home.scss",),
             "output_filename": "css/pages/cart-home.min.css",
         },
+        "login-or-register": {
+            "source_filenames": ("scss/pages/login-or-register.scss",),
+            "output_filename": "css/pages/login-or-register.min.css",
+        },
     },
     "JAVASCRIPT": {
         "global": {
-            "source_filenames": ("js/libs/jQuery-3.5.1.js",),
+            "source_filenames": ("js/libs/jQuery-3.5.1.js", "js/global.js"),
             "output_filename": "js/jQuery-3.5.1.min.js",
         },
         "pizza-detail": {

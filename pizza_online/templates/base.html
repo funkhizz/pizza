@@ -18,10 +18,15 @@
                     </a>
                 </div>
                 <div class="header-top__cart">
-                    <span>{% include 'svgs/person-fill.html' %}</span> Vladimirs Lahiza <span>{% include 'svgs/chevron-down.html' %}</span>
+                    <a href="{% url 'users:home' %}">
+                        <span>{% include 'svgs/person-fill.html' %}
+                        {% if user.is_authenticated %} Hey, {{ user.get_short_name }}{% else %}Hey, Pizza Lover</span>{% endif %}
+                    </a>
+                    <div><a href="http://">{% include 'svgs/chevron-down.html' %}</a></div>
                 </div>
+
             </div>
-            <div class="nav-bar">
+            <div class="nav-bar container" id="myHeader">
                 <ul class="lists row">
                     <a href="/" class="lists__item"><li>Home</li></a>
                     <a href="{% url 'products:menu-list' %}" class="lists__item"><li>Menu</li></a>

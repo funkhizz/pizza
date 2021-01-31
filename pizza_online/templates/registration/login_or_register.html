@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static pipeline crispy_forms_tags %}
+
+
+{% block css %}
+    {% stylesheet 'login-or-register' %}
+{% endblock %}
+
+
+
+
+{% block content %}
+    <div class="content user-forms nmbottom">
+        <div class="row">
+            <div class="col-sm-6">
+                <form action="" method="post" class="block block__gray-lightest">
+                        <input name="next" type="hidden" value="{{ next }}" />
+                        <div class='panel-heading'>
+                            <h2 class="h3">Already have an account?</h2>
+                        </div>
+
+                        {% crispy login_form login_form.helper %}
+
+                        <div class="buttonHolder">
+                            <button type="submit" class="btn btn btn-primary btn_enzen">Sign in</button>
+                        </div>
+
+                        <br />
+                        <p><small><a href="">Forgotten your password?</a></small></p>
+
+                </form>
+            </div>
+            <div class="col-sm-6 chamfer">
+                <form action="" method="post" class="block block__gray ">
+                    <input name="next" type="hidden" value="{{ next }}" />
+
+                    <div>
+
+                        <h2 class="h3">Create new account"</h2>
+
+                        <div>
+                            {% if registration_form.errors %}
+                                {% include "snippets/form-error.html" %}
+                            {% endif %}
+
+                            {% crispy registration_form %}
+
+                            <div class="buttonHolder">
+                                <button type="submit" class="btn">Create account</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
