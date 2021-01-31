@@ -3,21 +3,31 @@
         <div class="order__title">
             {{ pizza }}
         </div>
-        <div class="order__option">
-            <div class="quantity">
-                <select name="quantity" id="{{ id }}">
-                    {% for key, values in quantity_choices.items %}
-                    <option value="{{ values }}" >{{ values }}</option>
-                    {% endfor %}
-                </select>
+        
+        {% if cart_item %}
+            <div class="order__option update">
+                <button class="btn btn-green">
+                    Update pizza
+                </button>
             </div>
-            <div class="order__price">
-                {{ pizza.price }}
+        {% else %}
+            <div class="order__option">
+                <div class="quantity">
+                    <select name="quantity" id="{{ id }}">
+                        {% for key, values in quantity_choices.items %}
+                        <option value="{{ values }}" >{{ values }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="order__price">
+                    {{ pizza.price }}
+                </div>
+                <button class="btn btn-green">
+                    Add to order
+                </button>
             </div>
-            <button class="btn btn-green">
-                Add to order
-            </button>
-        </div>
+        {% endif %}
+            
     </div>
     <div class="info">
         <a href="{% url 'products:menu-list' %}"><span>Change section</span></a>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from pizza_online.apps.products.models import Product
+from pizza_online.apps.ingredients.models import Ingredient
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
@@ -46,15 +47,15 @@ class Cart(models.Model):
 class CartItem(models.Model):
     cart = models.ForeignKey("Cart", null=True, blank=True, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    extra_ingredients = models.ManyToManyField(Ingredient, blank=True)
+    price = models.DecimalField(max_digits=5, decimal_places=2, default=12.99)
     quantity = models.IntegerField(
         default=0, validators=[MaxValueValidator(50), MinValueValidator(1)]
     )
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
+
     def __str__(self):
-        try:
-            return str(self.product.title)
-        except:
-            return self.product.title
+        return self.product.title
 

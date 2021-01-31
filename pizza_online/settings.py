@@ -175,6 +175,10 @@ PIPELINE = {
             "source_filenames": ("js/pages/pizza-detail.js",),
             "output_filename": "js/pizza-detail.min.js",
         },
+        "update-item": {
+            "source_filenames": ("js/pages/update-item.js",),
+            "output_filename": "js/update-item.min.js",
+        },
     },
     "COMPILERS": ("pipeline.compilers.sass.SASSCompiler",),
     "SASS_BINARY": "pysassc",

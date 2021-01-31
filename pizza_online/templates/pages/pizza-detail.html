@@ -14,49 +14,6 @@
 
 
 {% block content %}
-    {% with pizza=object %}
-        <form action="{% url 'carts:add_to_cart' %}" method="POST">
-            {% csrf_token %}
-            <input hidden name="product_id" value='{{pizza.id}}'>
-            <section class="pizza-section">
-                {% include 'snippets/order-details.html' with id="id1" %}
-                <div class="image">
-                    <img src="{{ pizza.image.url }}" class="img-responsive">
-                </div>
-                <div class="toppings">
-                    <div class="toppings__title">
-                        Toppings
-                    </div>
-                    <div class="toppings__list row">
-                            
-                            {% for ingredient in ingredients %}
-                                <div class="topping-card row">
-                                    <div class="topping-card__image">
-                                        <img src="{% static 'img/pizza-banner.jpeg' %}" class="img-responsive">
-                                    </div>
-                                    {% if ingredient in pizza.ingredients.all %}
-                                        <div class="topping-card__title active base-ingredient">
-                                            <select name="is_selected" hidden>
-                                                <option value="{{ ingredient.title }}" hidden></option>
-                                            </select>
-                                            {{ ingredient.title }}
-                                        </div>
-                                    {% else %}
-                                        <div class="topping-card__title">
-                                            <select name="not_selected" hidden>
-                                                <option value="{{ ingredient.title }}" hidden></option>
-                                            </select>
-                                            {{ ingredient.title }}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                                
-                    </div>
-                </div>
-                {% include 'snippets/order-details.html' with id="id2" %}
-            </section>
-        </form>
-    {% endwith %}
+    {% include 'snippets/pizza-order.html' %}
 {% endblock content %}
     

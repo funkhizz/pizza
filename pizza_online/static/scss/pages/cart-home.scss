@@ -56,9 +56,22 @@
             }
 
         }
+        .middle-side {
+            width: 25%;
+            font-size: $font-size-md;
+            .ingredient-plus {
+                span {
+                    svg {
+                        padding-top: .2rem;
+                        fill: $color-green;
+                        transform: scale(1.4);
 
+                    }
+                }
+            }
+        }
         .right-side {
-
+            width: 25%;
             color: $color-blue;
             &__price, &__actions {
                 @include flex-center;

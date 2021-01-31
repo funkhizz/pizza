@@ -1,0 +1,10 @@
+{% extends 'pages/pizza-detail.html' %}
+{% load pipeline static %}
+
+{% block content %}
+    {% include 'snippets/pizza-order.html' with object=cart_item.product %}
+{% endblock content %}
+
+{% block js %}
+    {% javascript 'update-item' %}
+{% endblock %}

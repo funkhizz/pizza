@@ -34,16 +34,23 @@
                                     {{ ingredient.title  }}
                                 </div>
                             {% endfor %}
-                                
                         </div>
-
+                    </div>
+                    <div class="middle-side">
+                        
+                        {% for extra_ingr in cart_item.extra_ingredients.all %}
+                            <div class="ingredient-plus">
+                                <span>{% include 'svgs/plus.html' %}{{ extra_ingr }}</span>
+                            </div>
+                        {% endfor %}
+                            
                     </div>
                     <div class="right-side">
                         <div class="right-side__price">
-                            £ {{ cart_item.product.price }}
+                            £ {{ cart_item.price }}
                         </div>
                         <div class="right-side__actions">
-                            <form action="{% url 'carts:remove_from_cart' %}" method="post">
+                            <form action="{% url 'carts:update_item' %}" method="post">
                                 {% csrf_token %}
                                 <input hidden name="cart_item_id" value="{{ cart_item.id }}">
                                 <input hidden name="cart_id" value="{{ cart.id }}">
