@@ -1,39 +1,42 @@
 .row {
     display: flex;
     flex-flow: wrap;
-
+    justify-content: space-between;
 }
 
-.product-card {
-    width: 25rem;
-    &:not(:last-of-type) {
-        margin-right: 2rem;
-    }
-    &__image {
-        overflow: hidden;
-        &:hover {
-            .img-responsive-product {
-                transition: opacity 0.3s, transform 0.3s ease-in;
-                transform: scale(1.1);
-                opacity: 0.8;
+.products-section {
+    justify-content: start;
+    .product-card {
+        width: 25rem;
+        &:not(:last-of-type) {
+            margin-right: 2rem;
+        }
+        &__image {
+            overflow: hidden;
+            &:hover {
+                .img-responsive-product {
+                    transition: opacity 0.3s, transform 0.3s ease-in;
+                    transform: scale(1.1);
+                    opacity: 0.8;
+                }
             }
         }
-    }
-    &__title {
-        background-color: $color-black;
-        padding: 1rem;
-        @include flex-center;
-        h2 {
-            color: $color-white;
-            
+        &__title {
+            background-color: $color-black;
+            padding: 1rem;
+            @include flex-center;
+            h2 {
+                color: $color-white;
+                
+            }
         }
-    }
-    &__description {
-        background-color: $color-green;
-        color: $color-white;
-        font-size: $font-size-md;
-        padding: 0.5rem;
-        height: 8rem;
+        &__description {
+            background-color: $color-green;
+            color: $color-white;
+            font-size: $font-size-md;
+            padding: 0.5rem;
+            height: 8rem;
+        }
     }
 }
 
@@ -45,13 +48,13 @@
 }
 
 .topping-card {
-    width: 35rem;
+    width: 32.4%;
     margin-bottom: 1rem;
     height: 4rem;
     border: 1px solid $gray-light;
     font-size: $font-size-sm;
-    &:not(:last-of-type) {
-        margin-right: 1rem;
+    &:not(:nth-child(3n)) {
+        margin-right: 1.5rem;
     }
     &__image {
         width: 20%;
