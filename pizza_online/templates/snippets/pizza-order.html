@@ -25,12 +25,19 @@
                             <div class="topping-card__image">
                                 <img src="{% static 'img/pizza-banner.jpeg' %}" class="img-responsive">
                             </div>
+                            
                             {% if ingredient in pizza.ingredients.all %}
                                 <div class="topping-card__title active base-ingredient">
                                     {{ ingredient.title }}
                                 </div>
+                            {% elif ingredient in cart_item.extra_ingredients.all %}
+                                <div class="topping-card__title active">
+                                    <select name="is_selected" hidden>
+                                        <option value="{{ ingredient.title }}" hidden></option>
+                                    </select>
+                                    {{ ingredient.title }}
+                                </div>
                             {% else %}
-
                                 <div class="topping-card__title">
                                     <select name="not_selected" hidden>
                                         <option value="{{ ingredient.title }}" hidden></option>

@@ -58,12 +58,10 @@ def add_to_cart(request):
                     quantity=1,
                     price=product_obj.price,
                 )
-                add_extra_ingredients(cart_item.id, is_selected)
-            cart_obj.refresh_from_db()
-            cart_obj.total += product_obj.price
-            cart_obj.save()
+                add_extra_ingredients(cart_item.id, is_selected, product_obj)
         else:
-            add_extra_ingredients(cart_item_id, is_selected)
+            add_extra_ingredients(cart_item_id, is_selected, product_obj)
+        update_cart(cart_obj)
         count_cart_items(request, cart_obj)
     return redirect("carts:cart-home")
 
@@ -71,16 +69,11 @@ def add_to_cart(request):
 def remove_from_cart(request):
     cart_item_id = request.POST.get("cart_item_id")
     cart_id = request.POST.get("cart_id")
+    cart_obj = Cart.objects.get(id=cart_id)
     if cart_item_id:
-        cart_item = CartItem.objects.get(id=cart_item_id).delete()
-        cart_items = CartItem.objects.filter(cart=cart_id)
-        total = 0
-        for cart_item in cart_items:
-            total += cart_item.product.price
-        cart_obj = Cart.objects.get(id=cart_id)
-        cart_obj.total = total
-        cart_obj.save()
-        count_cart_items(request, cart_obj)
+        CartItem.objects.get(id=cart_item_id).delete()
+        update_cart(cart_obj)
+        cart_items = count_cart_items(request, cart_obj)
         if cart_items:
             return redirect("carts:cart-home")
     return redirect("products:menu-list")
@@ -89,15 +82,26 @@ def remove_from_cart(request):
 def count_cart_items(request, cart_obj):
     cart_quantity = CartItem.objects.filter(cart=cart_obj).count()
     request.session["cart_items"] = cart_quantity
+    return cart_quantity
 
 
-def add_extra_ingredients(cart_item_id, is_selected):
+def add_extra_ingredients(cart_item_id, is_selected, product_obj):
     ingredients = Ingredient.objects.filter(title__in=is_selected)
     cart_item = CartItem.objects.get(id=cart_item_id)
     cart_item.extra_ingredients.set(ingredients)
-    total_sum = 0
+    extra_ingredients_total_price = 0
     if cart_item.extra_ingredients.all():
         for extra_ingre in cart_item.extra_ingredients.all():
-            total_sum += extra_ingre.price
-    cart_item.price += total_sum
+            extra_ingredients_total_price += extra_ingre.price
+    cart_item.price = product_obj.price
+    cart_item.price += extra_ingredients_total_price
     cart_item.save()
+
+
+def update_cart(cart_obj):
+    cart_obj.refresh_from_db()
+    cart_item_qs = CartItem.objects.filter(cart=cart_obj.id)
+    cart_obj.total = 0
+    for cart_item in cart_item_qs:
+        cart_obj.total += cart_item.price
+    cart_obj.save()
