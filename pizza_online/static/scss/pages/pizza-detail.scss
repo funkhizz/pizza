@@ -54,7 +54,8 @@
             @include title-style;
         }
         &__list {
-            @include flex-center;
+            justify-content: start;
+
         }
     }
 }

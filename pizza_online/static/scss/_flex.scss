@@ -1,11 +1,7 @@
 .row {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    &:after {
-        content: '';
-        flex: auto;
-        }
+    flex-flow: wrap;
+
 }
 
 .product-card {
@@ -49,7 +45,7 @@
 }
 
 .topping-card {
-    width: 36rem;
+    width: 35rem;
     margin-bottom: 1rem;
     height: 4rem;
     border: 1px solid $gray-light;
