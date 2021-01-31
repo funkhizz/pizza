@@ -17,22 +17,25 @@
                         <img src="{% static 'img/pizza-logo.png' %}" alt="pizza-logo"  class="img-responsive-logo">
                     </a>
                 </div>
-                <div class="header-top__cart">
-                    <a href="{% url 'users:home' %}">
-                        <span>{% include 'svgs/person-fill.html' %}
-                        {% if user.is_authenticated %} Hey, {{ user.get_short_name }}{% else %}Hey, Pizza Lover</span>{% endif %}
-                    </a>
-                    <div><a href="http://">{% include 'svgs/chevron-down.html' %}</a></div>
+                <div class="header-top__user">
+                    <ul>
+                        {% if user.is_authenticated %}
+                            <li><a class="greet-link" href="{% url 'users:home' %}">{% include 'svgs/person-fill.html' %} Hey, {{ user.get_short_name }}</a></li>
+                            <li><a class="greet-link" href="">{% include 'svgs/chevron-down.html' %}</a></li>
+                        {% else %} 
+                            <li><a href="{% url 'users:login-or-register' %}">Login</a></li>
+                            <li><a href="{% url 'users:login-or-register' %}">Register</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
-
             </div>
             <div class="nav-bar container" id="myHeader">
                 <ul class="lists row">
-                    <a href="/" class="lists__item"><li>Home</li></a>
-                    <a href="{% url 'products:menu-list' %}" class="lists__item"><li>Menu</li></a>
-                    <a href="http://" class="lists__item"><li>About</li></a>
-                    <a href="http://" class="lists__item"><li>Contact</li></a>
-                    <a href="{% url 'carts:cart-home' %}" class="lists__item"><li>Cart</li></a>
+                    <li><a href="/" class="lists__item">Home</a></li>
+                    <li><a href="{% url 'products:menu-list' %}" class="lists__item">Menu</a></li>
+                    <li><a href="http://" class="lists__item">About</a></li>
+                    <li><a href="http://" class="lists__item">Contact</a></li>
+                    <li><a href="{% url 'carts:cart-home' %}" class="lists__item">Cart</a></li>
                 </ul>
             </div>
         </header>
