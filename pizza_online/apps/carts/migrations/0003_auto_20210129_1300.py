@@ -8,18 +8,22 @@ from django.utils.timezone import utc
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('carts', '0002_remove_cartitem_line_total'),
+        ("carts", "0002_remove_cartitem_line_total"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='cartitem',
-            name='timestamp',
-            field=models.DateTimeField(default=datetime.datetime(2021, 1, 29, 13, 0, 13, 537675, tzinfo=utc)),
+            model_name="cartitem",
+            name="timestamp",
+            field=models.DateTimeField(
+                default=datetime.datetime(2021, 1, 29, 13, 0, 13, 537675, tzinfo=utc)
+            ),
         ),
         migrations.AlterField(
-            model_name='cartitem',
-            name='updated',
-            field=models.DateTimeField(default=datetime.datetime(2021, 1, 29, 13, 0, 13, 537700, tzinfo=utc)),
+            model_name="cartitem",
+            name="updated",
+            field=models.DateTimeField(
+                default=datetime.datetime(2021, 1, 29, 13, 0, 13, 537700, tzinfo=utc)
+            ),
         ),
     ]

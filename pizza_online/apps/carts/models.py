@@ -37,7 +37,7 @@ class Cart(models.Model):
     total = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
-    
+
     objects = CartManager()
 
     def __str__(self):
@@ -55,7 +55,5 @@ class CartItem(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-
     def __str__(self):
         return self.product.title
-
