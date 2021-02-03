@@ -11,3 +11,18 @@
     text-transform: uppercase;
     margin-bottom: 1rem;
 }
+
+@mixin style-list {
+    list-style: none;
+}
+
+@mixin style-link {
+    a {
+        text-decoration: none;
+        color: $color-black;
+        &:hover {
+            color: $color-black;
+            text-decoration: 2px underline;
+        }
+    }
+}

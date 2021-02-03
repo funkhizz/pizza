@@ -152,11 +152,40 @@
     }
 
     .main {
-        margin-bottom: 2rem;
+        margin-bottom: 4rem;
     }
 
     #footer {
-        height: 20rem;
-        background-color: $gray-light;
+        background-color: $color-footer;
+        font-size: $font-size-md;
+
+        article {
+            padding: 3rem;
+            width: 33.33%;
+            .start-header {
+                &-title {
+                    @include flex-center;
+                    justify-content: space-between;
+                    color: $color-blue;
+                    font-size: $font-size-xl;
+                    svg {
+                        fill: $color-red;
+                    }
+                }
+            }
+        }
+        h3, .footer-item {
+            text-align: center;
+        }
+        .footer-lists {
+            .footer-item {
+                &:not(:last-of-type) {
+                    border-bottom: 1px solid $gray-light;
+                }
+                padding: 1rem;
+                @include style-list;
+                @include style-link;
+            }
+        }
     }
 }
