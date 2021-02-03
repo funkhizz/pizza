@@ -35,7 +35,9 @@
                     <li><a href="{% url 'products:menu-list' %}" class="lists__item">Menu</a></li>
                     <li><a href="http://" class="lists__item">About</a></li>
                     <li><a href="http://" class="lists__item">Contact</a></li>
-                    <li><a href="{% url 'carts:cart-home' %}" class="lists__item">Cart</a></li>
+                    <li class="cart-number">
+                        <a href="{% url 'carts:cart-home' %}" class="lists__item">{% include 'svgs/cart.html' %} Cart <div class="cart-quantity">{{ request.session.cart_items }}</div></a>
+                    </li>
                 </ul>
             </div>
         </header>
