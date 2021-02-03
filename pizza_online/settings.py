@@ -95,6 +95,7 @@ DATABASES = {
 AUTH_USER_MODEL = "users.User"
 
 # Login
+LOGIN_URL = "users:login-or-register"
 LOGIN_REDIRECT_URL = "users:home"
 
 

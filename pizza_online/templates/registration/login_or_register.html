@@ -1,58 +1,47 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% load static pipeline crispy_forms_tags %}
 
-
-{% block css %}
-    {% stylesheet 'login-or-register' %}
-{% endblock %}
-
-
-
+{% block css %} {% stylesheet 'login-or-register' %} {% endblock %}
 
 {% block content %}
-    <div class="content user-forms nmbottom">
-        <div class="row">
-            <div class="col-sm-6">
-                <form action="" method="post" class="block block__gray-lightest">
-                        <input name="next" type="hidden" value="{{ next }}" />
-                        <div class='panel-heading'>
-                            <h2 class="h3">Already have an account?</h2>
-                        </div>
+<div class="login-register">
+    <div class="row">
+        <div class="login">
+            <form action="{% url 'users:login-or-register' %}" method="post" class="">
+                <input name="next" type="hidden" value="{{ next }}" />
+                <div class="panel-heading">
+                    <h2 class="">Already have an account?</h2>
+                </div>
 
-                        {% crispy login_form login_form.helper %}
+                {% crispy login_form login_form.helper %}
 
-                        <div class="buttonHolder">
-                            <button type="submit" class="btn btn btn-primary btn_enzen">Sign in</button>
-                        </div>
+                    <button type="submit" class="btn btn-green">
+                        Sign in
+                    </button>
 
-                        <br />
-                        <p><small><a href="">Forgotten your password?</a></small></p>
+                <br />
+                <p>
+                    <small><a href="">Forgotten your password?</a></small>
+                </p>
+            </form>
+        </div>
+        <div class="register">
+            <form action="{% url 'users:register' %}" method="post" class="">
+                <input name="next" type="hidden" value="{{ next }}" />
 
-                </form>
-            </div>
-            <div class="col-sm-6 chamfer">
-                <form action="" method="post" class="block block__gray ">
-                    <input name="next" type="hidden" value="{{ next }}" />
-
+                <div>
+                    <h2 class="">Create new account</h2>
                     <div>
+                        {% if registration_form.errors %} 
+                            {% include "snippets/form-error.html" %} 
+                        {% endif %} 
+                        {% crispy registration_form %}
 
-                        <h2 class="h3">Create new account</h2>
-
-                        <div>
-                            {% if registration_form.errors %}
-                                {% include "snippets/form-error.html" %}
-                            {% endif %}
-
-                            {% crispy registration_form %}
-
-                            <div class="buttonHolder">
-                                <button type="submit" class="btn">Create account</button>
-                            </div>
-
-                        </div>
+                            <button type="submit" class="btn btn-green">Create account</button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}

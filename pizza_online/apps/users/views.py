@@ -62,3 +62,56 @@ def login_or_register(request):
             "registration_form": registration_form,
         },
     )
+
+
+class RegistrationView(BaseRegistrationView):
+    form_class = CustomUserCreationForm
+    template_name = "registration/login_or_register.html"
+
+    @method_decorator(sensitive_post_parameters())
+    @method_decorator(never_cache)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(RegistrationView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                "next": self.request.GET.get(
+                    "next", reverse_lazy(settings.LOGIN_REDIRECT_URL)
+                ),
+                "login_form": LoginForm(),
+                "registration_form": CustomUserCreationForm(),
+                "banner_image": self.banner_image(),
+            }
+        )
+        return context
+
+    def register(self, form):
+        user_model = get_user_model()
+        user_model._default_manager.create_user(
+            form.cleaned_data["email"],
+            form.cleaned_data["password1"],
+            first_name=form.cleaned_data["first_name"],
+            last_name=form.cleaned_data["last_name"],
+            is_active=True,
+        )
+
+        new_user = authenticate(
+            username=form.cleaned_data["email"],
+            password=form.cleaned_data["password1"],
+        )
+
+        auth_login(self.request, new_user)
+        return new_user
+
+    def get_success_url(self, user):
+        return self.request.POST.get(
+            "next", reverse_lazy(settings.LOGIN_REDIRECT_URL)
+        )
+
+    def form_invalid(self, form):
+        context = self.get_context_data()
+        context["registration_form"] = form
+        return render(self.request, self.template_name, context)

@@ -105,13 +105,13 @@ class CustomUserCreationForm(EmailUserCreationForm):
         label="Password",
         strip=False,
         widget=forms.PasswordInput,
-        help_text=mark_safe(password_validators_help_text_html()),
     )
 
     password2 = forms.CharField(
         label=_("Password confirmation"),
         strip=False,
         widget=forms.PasswordInput,
+        help_text=mark_safe(password_validators_help_text_html()),
     )
 
     class Meta(EmailUserCreationForm.Meta):
@@ -165,10 +165,8 @@ class CustomUserCreationForm(EmailUserCreationForm):
         self.helper.form_tag = False
 
         self.helper.layout = Layout(
-            Row(
-                Div("first_name", css_class="col-sm-6"),
-                Div("last_name", css_class="col-sm-6"),
-            ),
+            Div("first_name", css_class="col-sm-6"),
+            Div("last_name", css_class="col-sm-6"),
             "email",
             Field("email2", placeholder="Retype email for verification"),
             "password1",

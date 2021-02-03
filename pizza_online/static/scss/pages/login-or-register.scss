@@ -1,0 +1,27 @@
+@import '../base.scss';
+
+.login-register {
+    font-size: $font-size-md;
+    padding: 5rem 5rem;
+    background-color: $color-blue-light;
+    h2 {
+        font-size: $font-size-xl;
+    }
+    .login, .register {
+        width: 50%;
+        .control-group:last-of-type {
+            margin-bottom: 2rem;
+        }
+    }
+    .login {
+
+    }
+
+    .register {
+        @include flex-center;
+        justify-content: end;
+    }
+}
+.controls {
+    font-size: $font-size-sm;
+}
