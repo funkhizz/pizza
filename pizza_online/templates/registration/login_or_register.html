@@ -9,26 +9,27 @@
         <div class="login">
             <form action="{% url 'users:login-or-register' %}" method="post" class="">
                 <input name="next" type="hidden" value="{{ next }}" />
-                <div class="panel-heading">
-                    <h2 class="">Already have an account?</h2>
+                <div>
+                    <div class="">
+                        <h2 class="">Already have an account?</h2>
+                    </div>
+    
+                    {% crispy login_form login_form.helper %}
+    
+                        <button type="submit" class="btn btn-green">
+                            Sign in
+                        </button>
+    
+                    <br />
+                    <p>
+                        <small><a href="">Forgotten your password?</a></small>
+                    </p>
                 </div>
-
-                {% crispy login_form login_form.helper %}
-
-                    <button type="submit" class="btn btn-green">
-                        Sign in
-                    </button>
-
-                <br />
-                <p>
-                    <small><a href="">Forgotten your password?</a></small>
-                </p>
             </form>
         </div>
         <div class="register">
             <form action="{% url 'users:register' %}" method="post" class="">
                 <input name="next" type="hidden" value="{{ next }}" />
-
                 <div>
                     <h2 class="">Create new account</h2>
                     <div>

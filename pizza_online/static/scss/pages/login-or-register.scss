@@ -8,7 +8,8 @@
         font-size: $font-size-xl;
     }
     .login, .register {
-        width: 50%;
+        margin: 0 auto;
+
         .control-group:last-of-type {
             margin-bottom: 2rem;
         }
@@ -18,8 +19,7 @@
     }
 
     .register {
-        @include flex-center;
-        justify-content: end;
+
     }
 }
 .controls {
