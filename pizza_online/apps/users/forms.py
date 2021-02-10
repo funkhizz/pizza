@@ -1,6 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
 from django import forms
-from django.conf import settings
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
@@ -33,21 +32,9 @@ class CustomUserEditForm(EmailUserChangeForm):
         max_length=255,
     )
 
-    email2 = forms.EmailField(
-        required=True,
-        max_length=255,
-    )
-
     class Meta:
         model = User
         fields = ["first_name", "last_name", "email", "password"]
-
-    def clean_email2(self):
-        email = self.cleaned_data.get("email")
-        email2 = self.cleaned_data.get("email2")
-        if email and email2 and email != email2:
-            raise forms.ValidationError("Email addresses do not match.")
-        return email2
 
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
@@ -60,20 +47,13 @@ class CustomUserEditForm(EmailUserChangeForm):
             ),
             Row(
                 Div("email", css_class="col-sm-6"),
-                Div(
-                    "email2",
-                    placeholder=_("Retype email for verification"),
-                    css_class="col-sm-6",
-                ),
             ),
             ButtonHolder(
                 Submit("submit", _("Save changes")),
                 HTML(
                     "<a href='{0}' class='btn btn-link'>"
-                    "<i class='fa fa-{1}' aria-hidden='true'></i>"
-                    "{2}</a>".format(
+                    "{1}</a>".format(
                         reverse_lazy("users:home"),
-                        settings.ICON_CLASS_CANCEL,
                         _("Cancel"),
                     )
                 ),
@@ -81,7 +61,6 @@ class CustomUserEditForm(EmailUserChangeForm):
         )
 
         super(CustomUserEditForm, self).__init__(*args, **kwargs)
-        self.fields["email2"].initial = self.initial["email"]
 
 
 class CustomUserCreationForm(EmailUserCreationForm):

@@ -104,17 +104,38 @@ class RegistrationView(BaseRegistrationView):
         )
 
         auth_login(self.request, new_user)
-        send_welcome_email(
-            new_user.get_short_name(), new_user.email, self.request
-        )
+        send_welcome_email(new_user.get_short_name(), new_user.email, self.request)
         return new_user
 
     def get_success_url(self, user):
-        return self.request.POST.get(
-            "next", reverse_lazy(settings.LOGIN_REDIRECT_URL)
-        )
+        return self.request.POST.get("next", reverse_lazy(settings.LOGIN_REDIRECT_URL))
 
     def form_invalid(self, form):
         context = self.get_context_data()
         context["registration_form"] = form
         return render(self.request, self.template_name, context)
+
+
+class UpdateAccountView(ProtectedView, UpdateView):
+    """
+    Manage personal account details
+    """
+
+    form_class = CustomUserEditForm
+    template_name = "pages/users/update_account.html"
+    success_url = ""
+
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(User, id=self.request.user.pk)
+        return obj
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.save()
+
+        messages.success(self.request, _("Your details have been updated."))
+        return redirect(self.get_success_url())
+
+    def get_success_url(self):
+        return self.request.GET.get("next", reverse("users:details"))
+
