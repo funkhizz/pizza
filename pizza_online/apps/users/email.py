@@ -6,6 +6,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.urls import reverse
+from django.contrib.sites.models import Site
 
 from premailer import transform
 
@@ -20,7 +21,7 @@ def email_welcome(user_name, user_email, request):
     text_template = "email/welcome.txt"
     html_template = "email/welcome.html"
 
-    site_url = settings.ROOT_URLCONF
+    site_url = 'https://%s' % (Site.objects.get_current().domain)
     try:
         short_url = socket.gethostname().replace("www.", "")
     except:

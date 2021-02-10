@@ -1,0 +1,23 @@
+{% extends 'email/bases/alert.html' %}
+
+
+{% block content %}
+	<p>Hello {{ name }},</p>
+	
+	<p>Thank you for joining the {{ site_name }} community. Your new account gives you access to more case studies, articles, news and reports.}</p>
+
+	<p>Here are your account details as a reminder:</p>
+	<ul>
+		<li><strong>Email address:</strong> <a href="mailto:{{ user_email }}" class="no-link">{{ user_email }}</a></li>
+		<li><strong>Login URL:</strong> <a href="{{ login_url }}">{{ login_url }}</a></li>
+	</ul>
+
+	<p>If you forget your password, you can request a new one via the login page above.</p>
+
+	{% if account_email %}
+		<hr />
+
+		<p>For any questions or problems with your account, please contact us on:<br /><a href="mailto:{{ account_email }}">{{ account_email }}</a>.</p>
+
+	{% endif %}
+{% endblock %}

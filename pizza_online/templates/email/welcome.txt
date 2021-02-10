@@ -1,0 +1,21 @@
+{% autoescape off %}
+
+Hello {{ name }}
+
+Thank you for joining the {{ site_name }} community. Your new account gives you access to more case studies, articles, news and reports.
+
+Here are your account details as a reminder:
+
+- Email address: {{ user_email }}
+- {{ login_url }}
+
+If you forget your password, you can request a new one via the login page above.
+
+{% if account_email %}
+    For any questions or problems with your account, please contact us on: {{ account_email }}.
+{% endif %}
+
+--
+
+{{ site_url }}
+{% endautoescape %}

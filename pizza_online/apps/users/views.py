@@ -84,7 +84,6 @@ class RegistrationView(BaseRegistrationView):
                 ),
                 "login_form": LoginForm(),
                 "registration_form": CustomUserCreationForm(),
-                "banner_image": self.banner_image(),
             }
         )
         return context

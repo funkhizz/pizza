@@ -1,0 +1,41 @@
+{% extends 'email/bases/base.html' %}
+
+{% block body %}
+
+	<table id="header" class="body-wrap" width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td align="center" class="body-wrap">
+				<a href="{{ site_url }}"><img src="{{ site_url }}/static/img/logo-email.png" alt="{{ site_name }}" /></a>
+			</td>
+		</tr>
+	</table>
+
+	<table class="body-wrap">
+		<tr>
+			<td></td>
+			<td class="container" width="600">
+				<div class="content">
+					<table class="main" width="100%" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="alert alert-{% block alert_type %}{% endblock %}">
+								{% block title %}{{ subject }}{% endblock %}
+							</td>
+						</tr>
+						<tr>
+							<td class="content-wrap">
+								{% block content %}{% endblock %}
+							</td>
+						</tr>
+					</table>
+					<table width="100%" class="footer">
+						<tr>
+							<td class="aligncenter content-block">Visit us at <a href="{{ site_url }}">{{ site_url }}</a></td>
+						</tr>
+					</table>
+				</div>
+			</td>
+			<td></td>
+		</tr>
+	</table>
+
+{% endblock body %}
