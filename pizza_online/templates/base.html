@@ -36,7 +36,7 @@
                     <li><a href="http://" class="lists__item">About</a></li>
                     <li><a href="http://" class="lists__item">Contact</a></li>
                     <li class="cart-number">
-                        <a href="{% url 'carts:cart-home' %}" class="lists__item">{% include 'svgs/cart.html' %} Cart <div class="cart-quantity">{{ request.session.cart_items }}</div></a>
+                        <a href="{% url 'carts:cart-home' %}" class="lists__item">{% include 'svgs/cart.html' %} Cart <div class="cart-quantity">{% if request.session.cart_items %}{{ request.session.cart_items }}{% else %}0{% endif %}</div></a>
                     </li>
                 </ul>
             </div>

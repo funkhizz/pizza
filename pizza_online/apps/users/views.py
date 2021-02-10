@@ -16,6 +16,7 @@ from django_registration import signals
 from django_registration.views import RegistrationView as BaseRegistrationView
 from .utils import ProtectedView
 
+from .tasks import send_welcome_email
 from .models import User
 from .forms import LoginForm, CustomUserEditForm, CustomUserCreationForm
 
@@ -104,6 +105,9 @@ class RegistrationView(BaseRegistrationView):
         )
 
         auth_login(self.request, new_user)
+        send_welcome_email(
+            new_user.get_short_name(), new_user.email, self.request
+        )
         return new_user
 
     def get_success_url(self, user):

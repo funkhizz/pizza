@@ -26,8 +26,25 @@ SECRET_KEY = "&dhi-62rv&-0++!gxttvlrb!3mxnr&nq5xe8%$$b1m6_t*rg8m"
 DEBUG = True
 
 ALLOWED_HOSTS = []
+ROOT_URLCONF = "pizza_online.urls"
 
 
+CLIENT_NAME = "Pizza Online"
+SUPPORT_EMAIL = "digital.accounts@pizza-online.com"
+
+DEFAULT_FROM_EMAIL = "{0} <corporate.communcations@pizza-online.com>".format(
+    CLIENT_NAME
+)
+
+WEB_DEV_STAFF = [
+    "vl.hizz@gmail.com"
+]
+
+CLIENT_STAFF = [
+    "sam.mitchel@pizza-online.com",
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [

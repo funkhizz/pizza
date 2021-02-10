@@ -1,21 +1,7 @@
-// window.onscroll = function() {myFunction()};
-
-// var header = document.getElementById("myHeader");
-// var sticky = header.offsetTop;
-
-// function myFunction() {
-//   if (window.pageYOffset > sticky) {
-//     header.classList.add("sticky");
-//   } else {
-//     header.classList.remove("sticky");
-//   }
-// }
-
-// Jquery Sticky navbar
-var num = 95 //number of pixels before modifying styles
-
+// Sticky header with jQuery
 $(window).bind('scroll', function () {
-    if ($(window).scrollTop() > num) {
+    var scroll = $(window).scrollTop();
+    if (scroll > 90){
         $('#myHeader').addClass('sticky');
     } else {
         $('#myHeader').removeClass('sticky');

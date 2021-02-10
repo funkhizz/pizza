@@ -21,6 +21,16 @@
     .register {
 
     }
+    
+    // Reset password template
+    .lead {
+        font-weight: $font-weight-bold;
+    }
+    .panel-body {
+        .controls {
+            margin: 1.5rem 0;
+        }
+    }
 }
 .controls {
     font-size: $font-size-sm;

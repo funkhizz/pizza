@@ -21,6 +21,7 @@ from .views import BaseView
 urlpatterns = [
     path("", BaseView.as_view(), name="homepage"),
     path("users/", include("pizza_online.apps.users.urls")),
+    path("users/", include("django.contrib.auth.urls")),
     path("menu/", include("pizza_online.apps.products.urls")),
     path("cart/", include("pizza_online.apps.carts.urls")),
     path("admin/", admin.site.urls),
