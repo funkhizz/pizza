@@ -10,8 +10,6 @@
 6. Run project using `python manage.py runserver`.
 
 ## Screenshots
-<img src="https://ibb.co/58d3PM6" alt="Home screen" style="float: left; margin-right: 10px; width=186px">
-<img src="https://ibb.co/HFRf0h6" alt="Menu section screen" style="float: left; margin-right: 10px; width=186px">
-<img src="https://ibb.co/0szZ302" alt="Pizza section screen" style="float: left; margin-right: 10px; width=186px">
+![pizza1](https://user-images.githubusercontent.com/24867102/113295240-dac33f80-92ef-11eb-924c-a213e47997aa.png)
 
 
