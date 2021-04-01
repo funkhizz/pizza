@@ -11,5 +11,4 @@
 
 ## Screenshots
 ![pizza1](https://user-images.githubusercontent.com/24867102/113295240-dac33f80-92ef-11eb-924c-a213e47997aa.png)
-
-
+![pizza2](https://user-images.githubusercontent.com/24867102/113295393-0f36fb80-92f0-11eb-92df-1cf2ee26000f.png)
