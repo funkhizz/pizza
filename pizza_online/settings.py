@@ -36,15 +36,13 @@ DEFAULT_FROM_EMAIL = "{0} <corporate.communcations@pizza-online.com>".format(
     CLIENT_NAME
 )
 
-WEB_DEV_STAFF = [
-    "vl.hizz@gmail.com"
-]
+WEB_DEV_STAFF = ["vl.hizz@gmail.com"]
 
 CLIENT_STAFF = [
     "sam.mitchel@pizza-online.com",
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # Application definition
 
 INSTALLED_APPS = [
@@ -54,14 +52,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django.contrib.sites',
+    "django.contrib.sites",
     "pipeline",
     "custom_user",
-    'crispy_forms',
+    "crispy_forms",
     "pizza_online.apps.products.apps.ProductsConfig",
     "pizza_online.apps.ingredients.apps.IngredientsConfig",
     "pizza_online.apps.carts.apps.CartsConfig",
     "pizza_online.apps.users.apps.UsersConfig",
+    "pizza_online.apps.billing.apps.BillingConfig",
 ]
 
 MIDDLEWARE = [
