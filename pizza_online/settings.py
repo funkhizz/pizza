@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "pizza_online.apps.users.apps.UsersConfig",
     "pizza_online.apps.billing.apps.BillingConfig",
     "pizza_online.apps.orders.apps.OrdersConfig",
+    "pizza_online.apps.addresses.apps.AddressesConfig",
 ]
 
 MIDDLEWARE = [
