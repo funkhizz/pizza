@@ -10,18 +10,6 @@ from pizza_online.apps.products.choices import QUANTITY_CHOICES
 from .utils import add_extra_ingredients, update_cart, count_cart_items
 
 
-def update_item(request):
-    cart_item_id = request.POST.get("cart_item_id")
-    cart_item = CartItem.objects.get(id=cart_item_id)
-    ingredients = Ingredient.objects.all()
-    context = {
-        "cart_item": cart_item,
-        "ingredients": ingredients,
-        "quantity_choices": QUANTITY_CHOICES,
-    }
-    return render(request, "pages/update_item.html", context)
-
-
 class CartHomeBaseView(TemplateView):
     template_name = "pages/cart-home.html"
 
@@ -39,6 +27,22 @@ class CartHomeBaseView(TemplateView):
         if cartItems:
             return render(request, self.template_name, context)
         return redirect("products:menu-list")
+
+
+class CartCheckout(TemplateView):
+    template_name = "pages/checkout.html"
+
+
+def update_item(request):
+    cart_item_id = request.POST.get("cart_item_id")
+    cart_item = CartItem.objects.get(id=cart_item_id)
+    ingredients = Ingredient.objects.all()
+    context = {
+        "cart_item": cart_item,
+        "ingredients": ingredients,
+        "quantity_choices": QUANTITY_CHOICES,
+    }
+    return render(request, "pages/update_item.html", context)
 
 
 def add_to_cart(request):

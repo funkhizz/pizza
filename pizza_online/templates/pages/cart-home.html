@@ -91,5 +91,8 @@
             <div class="price">£ {{ cart.total }}</div>
         </div>
     </div>
+    <div class="checkout-cta">
+        <a href="{% url 'carts:cart-checkout' %}" class="btn-green cta">Checkout</a> 
+    </div>
 {% endblock content %}
     
