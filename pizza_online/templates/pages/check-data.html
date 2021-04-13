@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load pipeline %}
+
+{% block banner %}
+{% endblock banner %}
+    
+
+{% block css %}
+    
+{% endblock css %}
+
+{% block content %}
+    <div>Delivery adress: {{ address }}</div>
+    <div>Thanks, yout order number is {{ order_number }} </div>
+    <div>You will get your </div>
+    <ul>
+        {% for item in cart_items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    
+{% endblock content %}
+    

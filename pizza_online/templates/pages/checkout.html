@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load pipeline %}
+{% load pipeline crispy_forms_tags %}
 
 {% block banner %}
 {% endblock banner %}
@@ -10,7 +10,6 @@
 {% endblock css %}
 
 {% block content %}
-
-hello
+    {% crispy billing_form %}
 {% endblock content %}
     

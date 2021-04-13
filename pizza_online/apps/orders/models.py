@@ -62,23 +62,27 @@ class Order(models.Model):
 
     objects = OrderManager()
 
-    def check_done(self):
-        billing_profile = self.billing_profile
-        shipping_address = self.shipping_address
-        total = self.total
-        new_total = float(total)
-        if new_total < 0:
-            return False
-        elif billing_profile and shipping_address and new_total > 0:
-            return True
-        return False
+    def update_total(self):
+        self.total = self.cart.total
+        self.save()
+        return self.total
 
-    def order_paid(self):
-        if self.check_done():
-            print("hey")
-            self.status = "paid"
-            self.save()
-        return self.status
+    # def check_done(self):
+    #     billing_profile = self.billing_profile
+    #     shipping_address = self.shipping_address
+    #     total = self.total
+    #     new_total = float(total)
+    #     if new_total < 0:
+    #         return False
+    #     elif billing_profile and shipping_address and new_total > 0:
+    #         return True
+    #     return False
+
+    # def order_paid(self):
+    #     if self.check_done():
+    #         self.status = "paid"
+    #         self.save()
+    #     return self.status
 
 
 @receiver(pre_save, sender=Order)
@@ -92,17 +96,13 @@ def pre_save_create_order_id(sender, instance, *args, **kwargs):
         qs.update(active=False)
 
 
-@receiver(post_save, sender=Cart)
-def post_save_cart_total(sender, instance, created, *args, **kwargs):
-    if not created:
-        cart_obj = instance
-        cart_id = cart_obj.id
-        qs = Order.objects.filter(cart_id=cart_id)
-        if qs.count() == 1:
-            order_obj = qs.first()
-            order_obj.update_total()
+@receiver(post_save, sender=Order)
+def post_save_order(sender, instance, created, *args, **kwargs):
+    if created:
+        instance.update_total()
 
 
+# Most bought product
 @receiver(post_save, sender=Order)
 def post_save_order_products(sender, instance, *args, **kwargs):
     if instance.status == "paid":

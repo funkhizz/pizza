@@ -15,8 +15,4 @@ class Address(models.Model):
     phone = models.CharField(max_length=120, blank=True, null=True)
 
     def __str__(self):
-        return str(
-            "email: {0}, {1} {2} {3}".format(
-                self.billing_profile, self.address_1, self.city, self.post_code
-            )
-        )
+        return str("{0}, {1}, {2}".format(self.address_1, self.city, self.post_code))
